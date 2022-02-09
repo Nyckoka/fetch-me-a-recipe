@@ -1,2 +1,2 @@
 # fetch-me-a-recipe
- Fetches food recipes.
+Fetches food recipes.
