@@ -1,0 +1,12 @@
+{
+	"schemas": {
+		"/random": {
+			"body": {
+				"lol": {
+					"required": true
+				}
+			},
+			"query": {}
+		}
+	}
+}

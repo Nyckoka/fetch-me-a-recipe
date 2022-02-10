@@ -1,0 +1,21 @@
+openapi: 3.0.1
+info:
+  title: defaultTitle
+  description: defaultDescription
+  version: "0.1"
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/random:
+    get:
+      description: "Fetches a random recipe."
+      parameters:
+        - in: query
+          name: simple
+          schema:
+            type: boolean
+          description: "If the recipe should be represented in its simple form."
+
+      responses:
+        "200":
+          description: "Success"
