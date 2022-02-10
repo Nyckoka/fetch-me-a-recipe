@@ -1,26 +1,22 @@
 
 const fetch = require("node-fetch");
 
-const database = require("./database");
-
-const NUMBER_OF_RANDOM_RECIPES = 100;
+const SPOONACULAR_API_URL = "https://api.spoonacular.com";
 
 /**
  * All data is fetched from Spoonacular.
  */
 
 /**
- * One api call per day that fetches 100 random recipes.
+ * Fetches random recipes.
+ * @returns list of random recipes
  */
-
-/**
- * Fetches a random recipe from the list of random recipes.
- * @returns random recipe
- */
-function fetchRandomRecipe() {
-    return database.randomRecipes[Math.floor(Math.random() * NUMBER_OF_RANDOM_RECIPES)];
+async function fetchRandomRecipes(numberOfRecipes) {
+    const res = await fetch(`${SPOONACULAR_API_URL}/recipes/random?number=${numberOfRecipes}`);
+    const body = await res.json();
+    return body.recipes;
 }
 
 module.exports = {
-    fetchRandomRecipe
+    fetchRandomRecipes
 };

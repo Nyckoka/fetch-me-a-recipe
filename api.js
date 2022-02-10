@@ -1,14 +1,20 @@
 
 const express = require("express");
-const app = express();
-
-const dataExt = require("./data-ext")
-
-const PORT = 8080;
 
 
-app.get("/random", (req, res) => {
-    res.send(dataExt.fetchRandomRecipe());
-});
+module.exports = function (services) {
 
-app.listen(PORT);
+    /**
+    * Fetches a random recipe.
+    */
+    function fetchRandomRecipe(req, res) {
+        services.fetchRandomRecipe()
+        .then(recipes => res.send(recipes));
+    }
+
+    const router = express.Router();
+
+    router.get("/random", fetchRandomRecipe);
+
+    return router;
+};
